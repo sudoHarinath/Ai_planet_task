@@ -1,0 +1,24 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+langgraph
+langchain
+qdrant-client
+datasets
+sentence-transformers
+torch
+fastembed
+fastmcp
+tavily-python
+nest_asyncio
+# The user specified 'prithivida/Splade_PP_en_v2' or 'Qdrant/minicoil-v1' which need these:
+# Note: SPLADE and miniCOIL models might have specific dependencies, ensure they are installed.
+# We will use sentence-transformers for the sparse model as well for simplicity here.
+presidio-analyzer
+presidio-anonymizer
+spacy
+python-multipart
+# After installing spacy, run: python -m spacy download en_core_web_lg
+# sambanova-sdk
+pandas
+dspy-ai

@@ -1,0 +1,12 @@
+question,bad_answer,correction
+what is 7*7,"<thinking>
+The context provides multiple sources that directly answer the question ""what is 7*7"". 
+The first result from web2.0calc states that 7*7 = 49, also represented as 7² = 49.
+The second result from answers.com confirms that 7 multiplied by 7 equals 49, and it's also known as 7 squared.
+Both sources consistently state that 7*7 equals 49.
+</thinking>
+
+49","i forgot i thought i asked about 7*8
+"
+how does one solve a linear equation with one variable,"To solve a linear equation with one variable, isolate the variable on one side of the equation by performing the inverse operation of the one applied to the variable. If the variable is multiplied by a number, divide both sides by that number. If the variable has a number added to or subtracted from it, undo the operation by performing the opposite (subtraction or addition, respectively). Check the solution by substituting the value back into the original equation to verify that both sides are equal.",show some context in the reasoning if it helps user understand the question better
+7*7,49,include some reasoning steps in the answe

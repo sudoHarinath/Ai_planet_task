@@ -1,0 +1,48 @@
+{
+  "generate_answer": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "question": "7*7",
+        "context": "",
+        "solution": "include some reasoning steps in the answe"
+      },
+      {
+        "question": "how does one solve a linear equation with one variable",
+        "context": "",
+        "solution": "show some context in the reasoning if it helps user understand the question better"
+      },
+      {
+        "question": "what is 7*7",
+        "context": "",
+        "solution": "i forgot i thought i asked about 7*8\n"
+      }
+    ],
+    "signature": {
+      "instructions": "Generate a step-by-step solution to a math question based on provided context.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "Relevant information from a knowledge base or web search."
+        },
+        {
+          "prefix": "Question:",
+          "description": "The user's math question."
+        },
+        {
+          "prefix": "<thinking>",
+          "description": "A step-by-step thinking process and the final answer."
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.12",
+      "dspy": "2.6.27",
+      "cloudpickle": "3.1"
+    }
+  }
+}
