@@ -4,7 +4,7 @@ This project is a sophisticated AI Math Tutor built on an advanced Retrieval-Aug
 
 🚀 Workflow
 <p align="center">
-  <img src="(https://drive.google.com/file/d/1PywF3QKX2DYQOvgQ_DPSo_qzVE_tR6-9/view?usp=sharing)" alt="Math Question Solving Architecture" width="85%">
+  <img src="Workflow.png" alt="Math Question Solving Architecture" width="85%">
 </p>
 
 
