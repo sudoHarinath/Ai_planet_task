@@ -1,29 +1,34 @@
-🧠 AI Math Tutor
-An Agentic-RAG System with Self-Improvement
-This project is a sophisticated AI Math Tutor built on an advanced Retrieval-Augmented Generation (RAG) architecture. It features an intelligent agent that can dynamically decide how to solve a user's math problem, learn from human feedback, and improve its performance over time.
+# 🧠 AI Math Tutor
 
-🚀 Workflow
+**An Agentic-RAG System with Self-Improvement**
+
+An advanced AI Math Tutor powered by a Retrieval-Augmented Generation (RAG) architecture. It features intelligent agent routing, feedback-driven self-improvement, and dynamic knowledge base construction for solving mathematical problems effectively.
+
+---
+
+## 🚀 System Overview
+
 <p align="center">
   <img src="Workflow.png" alt="Math Question Solving Architecture" width="85%">
 </p>
 
+---
 
-✨ Features
-Agentic Routing: A core agent built with LangGraph intelligently decides whether to answer a question using its internal knowledge base or to perform a targeted web search.
+## ✨ Key Features
 
-Hybrid Knowledge Base: Utilizes a Qdrant vector database with a hybrid search approach for fast and accurate retrieval from curated datasets like gsm8k.
+* **Agentic Routing:** Core agent, powered by **LangGraph**, decides whether to use internal knowledge or perform a curated web search.
+* **Hybrid Knowledge Base:** Fast and accurate retrieval from curated datasets (e.g., `gsm8k`) via **Qdrant** with hybrid search.
+* **Custom KB Creation:** Upload PDFs or provide a URL to dynamically create personalized knowledge bases.
+* **Secure Curated Web Search:** Queries pass through a **Model-Controlled Procedure (MCP)** server with strict domain whitelisting (e.g., *Khan Academy*, *WolframAlpha*).
+* **Privacy-First Guardrails:** All user input is filtered for PII using **Presidio** before LLM processing.
+* **Human-in-the-Loop Learning:** Corrections by users are logged and used to automatically optimize prompting logic via **DSPy**.
+* **Modern Web Stack:** FastAPI backend, React frontend, responsive UI via **React-Bootstrap**.
 
-Custom KB Creation: Users can dynamically create new knowledge bases by uploading their own PDF documents or pointing to a web-based PDF.
+---
 
-Secure & Curated Web Search: Implements a custom MCP (Model-Controlled Procedure) server that forces the agent to use a pre-approved list of high-quality educational websites (e.g., Khan Academy, WolframAlpha).
+## 🏩 System Architecture
 
-Privacy-First Guardrails: Proactively redacts Personally Identifiable Information (PII) from user inputs before they are processed by any LLM.
-
-Human-in-the-Loop (HITL) Learning: A complete feedback loop allows users to correct the agent's mistakes. This feedback is then used by the DSPy library to automatically optimize the agent's core prompting logic.
-
-Modern Tech Stack: Built with a FastAPI backend for high performance and a responsive React frontend with React-Bootstrap.
-
-🏛️ System Architecture
+```mermaid
 graph TD
     A[User @ React Frontend] --> B{FastAPI Backend};
 
@@ -52,104 +57,140 @@ graph TD
     style A fill:#cde4ff
     style J fill:#d2ffd2
     style HITL fill:#fff8c4
+```
 
-🛠️ Tech Stack
-Backend: Python, FastAPI, LangGraph, DSPy, Qdrant
+---
 
-Frontend: React, React-Bootstrap, Bootstrap
+## 🛠️ Technology Stack
 
-AI & LLMs: SambaNova, Hugging Face datasets
+| Component      | Tools/Libraries                          |
+| -------------- | ---------------------------------------- |
+| **Backend**    | Python, FastAPI, LangGraph, DSPy, Qdrant |
+| **Frontend**   | React, React-Bootstrap, Bootstrap        |
+| **AI/LLMs**    | SambaNova, Hugging Face Datasets         |
+| **Search**     | Tavily API, MCP Server                   |
+| **Guardrails** | Presidio (PII), Detoxify (Toxicity)      |
+| **Monitoring** | Opik Tracer                              |
 
-Web Search: Tavily API, FastMCP
+---
 
-Guardrails: Detoxify (Toxicity), Presidio (PII)
+## ⚙️ Setup and Installation
 
-Observability: Opik Tracer
+### 1. Prerequisites
 
-🚀 Setup and Installation
-1. Prerequisites
-Python 3.10+
+* Python 3.10+
+* Node.js 18+ and npm
+* API keys for:
 
-Node.js 18+ and npm
+  * SambaNova
+  * Tavily
+  * Opik
 
-An active SambaNova API key and a Tavily API key.
+---
 
-2. Backend Setup
-Navigate to the backend/ directory:
+### 2. Backend Setup
 
+```bash
 cd backend
 
-# Install all required Python packages
+# Install Python dependencies
 pip install -r requirements.txt
 
-# Download the necessary model for the PII guardrail
+# Download PII model
 python -m spacy download en_core_web_lg
+```
 
-3. Environment Variables
-Create a .env file in the backend/ directory and populate it with your API keys:
+Create a `.env` file in `backend/` with the following:
 
+```env
 SAMBANOVA_API_KEY="your-sambanova-key"
 TAVILY_API_KEY="your-tavily-key"
 OPIK_API_KEY="your-opik-key"
 OPIK_WORKSPACE="your-opik-workspace"
+```
 
-4. Frontend Setup
-Navigate to the frontend/ directory:
+---
 
+### 3. Frontend Setup
+
+```bash
 cd frontend
-
-# Install all required Node.js packages
 npm install
+```
 
-▶️ How to Run the Application
-The application requires running two backend services and the frontend.
+---
 
-Terminal 1: Start the MCP Server
-This server provides the curated web search tools for the agent.
+## ▶️ Running the Application
 
+### Terminal 1: Start the MCP Server
+
+```bash
 cd backend
 python mcp_server.py
+# Default: http://localhost:8000
+```
 
-This will typically start on http://localhost:8000.
+### Terminal 2: Start the FastAPI Application
 
-Terminal 2: Start the FastAPI Application
-This is the main application server that the frontend interacts with.
-
+```bash
 cd backend
 uvicorn app.main:app --reload --port 8001
+# API: http://localhost:8001
+```
 
-This will run on http://localhost:8001.
+### Terminal 3: Start the React Frontend
 
-Terminal 3: Start the React Frontend
+```bash
 cd frontend
 npm start
+# Frontend: http://localhost:3000
+```
 
-Open your browser to http://localhost:3000 to use the application.
+---
 
-📖 Usage Guide
-1. Create a Knowledge Base
-The default knowledge bases (gsm8k-base, math500-base) are created automatically the first time you select them and ask a question.
+## 📖 Usage Guide
 
-To create a custom KB:
+### 1. Creating a Knowledge Base
 
-In the sidebar, give your new KB a unique name.
+* Open the sidebar.
+* Enter a name for the new knowledge base.
+* Upload a local PDF or provide a public URL.
+* Click **Create KB**.
+* The KB will appear in the "Active Knowledge Base" dropdown once created.
 
-Choose to either upload a PDF from your computer or provide a public URL to a PDF.
+### 2. Asking a Math Question
 
-Click "Create KB". The process will start in the background.
+* Select the desired KB.
+* Enter your math problem in the input box.
+* Submit to receive an answer.
 
-The new KB will appear in the "Active Knowledge Base" dropdown.
+### 3. Human-in-the-Loop Optimization
 
-2. Ask a Question
-Select your desired knowledge base from the dropdown.
+* If the agent's answer is incorrect, click **👎**.
+* Submit the correct step-by-step solution.
+* Click **Optimize with Feedback** after feedback is collected.
+* **Restart the FastAPI server** to apply the new prompt logic.
 
-Type your math problem into the input box and press Send.
+---
 
-3. Provide Feedback and Optimize
-If the agent's answer is incorrect, click the "👎" button.
+## ✅ Example Knowledge Bases
 
-In the modal that appears, provide the correct, step-by-step solution and submit.
+* `gsm8k-base`
+* `math500-base`
+  These are initialized on first use.
 
-After collecting feedback, click the "Optimize with Feedback" button.
+---
 
-You must restart the FastAPI server (Terminal 2) after the optimization is complete for the agent to load the new, improved prompt.
+## 🔒 Security & Guardrails
+
+* **PII Redaction:** Powered by **Presidio**
+* **Toxicity Detection:** Powered by **Detoxify**
+* **Curated Domains:** All web access restricted via **MCP**
+
+---
+
+## 📊 Observability
+
+* Integrated with **Opik Tracer** for tracing and performance monitoring.
+
+---
