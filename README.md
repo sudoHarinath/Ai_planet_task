@@ -3,7 +3,10 @@ An Agentic-RAG System with Self-Improvement
 This project is a sophisticated AI Math Tutor built on an advanced Retrieval-Augmented Generation (RAG) architecture. It features an intelligent agent that can dynamically decide how to solve a user's math problem, learn from human feedback, and improve its performance over time.
 
 🚀 Workflow
-[!http://googleusercontent.com/image_generation_content/5](https://drive.google.com/file/d/1PywF3QKX2DYQOvgQ_DPSo_qzVE_tR6-9/view?usp=sharing)
+<p align="center">
+  <img src="[https://i.imgur.com/eGkH9fP.jpeg](https://drive.google.com/file/d/1PywF3QKX2DYQOvgQ_DPSo_qzVE_tR6-9/view?usp=sharing)" alt="Math Question Solving Architecture" width="85%">
+</p>
+
 
 ✨ Features
 Agentic Routing: A core agent built with LangGraph intelligently decides whether to answer a question using its internal knowledge base or to perform a targeted web search.
