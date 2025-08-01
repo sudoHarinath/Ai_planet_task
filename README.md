@@ -1,24 +1,26 @@
-🧠 AI Math Tutor: An Agentic-RAG System with Self-Improvement
+🧠 AI Math Tutor
+An Agentic-RAG System with Self-Improvement
 This project is a sophisticated AI Math Tutor built on an advanced Retrieval-Augmented Generation (RAG) architecture. It features an intelligent agent that can dynamically decide how to solve a user's math problem, learn from human feedback, and improve its performance over time.
+
+🚀 Workflow
+[!http://googleusercontent.com/image_generation_content/5](https://drive.google.com/file/d/1PywF3QKX2DYQOvgQ_DPSo_qzVE_tR6-9/view?usp=sharing)
 
 ✨ Features
 Agentic Routing: A core agent built with LangGraph intelligently decides whether to answer a question using its internal knowledge base or to perform a targeted web search.
 
-Hybrid Knowledge Base: Utilizes a Qdrant vector database with a hybrid search approach (dense and sparse vectors) for fast and accurate retrieval from curated datasets like gsm8k.
+Hybrid Knowledge Base: Utilizes a Qdrant vector database with a hybrid search approach for fast and accurate retrieval from curated datasets like gsm8k.
 
 Custom KB Creation: Users can dynamically create new knowledge bases by uploading their own PDF documents or pointing to a web-based PDF.
 
-Secure & Curated Web Search: Implements a custom MCP (Model-Controlled Procedure) server that forces the agent to use a pre-approved list of high-quality educational websites (e.g., Khan Academy, WolframAlpha), preventing it from accessing unreliable sources.
+Secure & Curated Web Search: Implements a custom MCP (Model-Controlled Procedure) server that forces the agent to use a pre-approved list of high-quality educational websites (e.g., Khan Academy, WolframAlpha).
 
-Privacy-First Guardrails: Proactively redacts Personally Identifiable Information (PII) from user inputs before they are processed by any LLM. Additional guardrails check for topic relevance and output toxicity.
+Privacy-First Guardrails: Proactively redacts Personally Identifiable Information (PII) from user inputs before they are processed by any LLM.
 
-Human-in-the-Loop (HITL) Learning: A complete feedback loop allows users to correct the agent's mistakes. This feedback is then used by the DSPy library to automatically optimize the agent's core prompting logic, enabling true self-improvement.
+Human-in-the-Loop (HITL) Learning: A complete feedback loop allows users to correct the agent's mistakes. This feedback is then used by the DSPy library to automatically optimize the agent's core prompting logic.
 
-Modern Tech Stack: Built with a FastAPI backend for high performance and a responsive React frontend with React-Bootstrap for a professional UI.
+Modern Tech Stack: Built with a FastAPI backend for high performance and a responsive React frontend with React-Bootstrap.
 
 🏛️ System Architecture
-The application follows a modular, multi-service architecture.
-
 graph TD
     A[User @ React Frontend] --> B{FastAPI Backend};
 
@@ -49,7 +51,7 @@ graph TD
     style HITL fill:#fff8c4
 
 🛠️ Tech Stack
-Backend: Python, FastAPI, LangGraph, DSPy, Qdrant, Pandas
+Backend: Python, FastAPI, LangGraph, DSPy, Qdrant
 
 Frontend: React, React-Bootstrap, Bootstrap
 
@@ -122,7 +124,7 @@ npm start
 Open your browser to http://localhost:3000 to use the application.
 
 📖 Usage Guide
-1. Create a Knowledge Base (First-Time Use)
+1. Create a Knowledge Base
 The default knowledge bases (gsm8k-base, math500-base) are created automatically the first time you select them and ask a question.
 
 To create a custom KB:
@@ -133,18 +135,18 @@ Choose to either upload a PDF from your computer or provide a public URL to a PD
 
 Click "Create KB". The process will start in the background.
 
-The new KB will appear in the "Active Knowledge Base" dropdown and will be automatically selected.
+The new KB will appear in the "Active Knowledge Base" dropdown.
 
 2. Ask a Question
 Select your desired knowledge base from the dropdown.
 
-Type your math problem into the input box at the bottom and press Send.
+Type your math problem into the input box and press Send.
 
 3. Provide Feedback and Optimize
 If the agent's answer is incorrect, click the "👎" button.
 
 In the modal that appears, provide the correct, step-by-step solution and submit.
 
-After collecting several pieces of feedback, click the "Optimize with Feedback" button in the sidebar.
+After collecting feedback, click the "Optimize with Feedback" button.
 
-This will trigger the DSPy optimization process. You must restart the FastAPI server (Terminal 2) after the optimization is complete for the agent to load the new, improved prompt.
+You must restart the FastAPI server (Terminal 2) after the optimization is complete for the agent to load the new, improved prompt.
